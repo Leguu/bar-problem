@@ -18,6 +18,12 @@ func (person *Person) AddRelation(other *Person, value int, partners bool) *Rela
 }
 
 func (person *Person) Assign(seat *Seat) {
+	if seat == nil {
+		person.AssignedSeat.Person = nil
+		person.AssignedSeat = nil
+		return
+	}
+
 	if seat.Person != nil {
 		seat.Person.AssignedSeat = nil
 	}

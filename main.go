@@ -25,50 +25,22 @@ type Relation struct {
 	Partners bool
 }
 
-type Bar struct {
-	Seats     []*Seat
-	People    []*Person
-	Relations []*Relation
-}
-
-func (bar *Bar) EveryoneSeated() bool {
-	for _, seat := range bar.Seats {
-		if seat.Person == nil {
-			return false
-		}
-	}
-	for _, person := range bar.People {
-		if person.AssignedSeat == nil {
-			return false
-		}
-	}
-	return true
-}
-
-func (bar *Bar) TotalValue() int {
-	total := 0
-	for _, person := range bar.People {
-		total += person.TotalValue()
-	}
-	return total
-}
-
 func main() {
-	seats, err := ReadSeatsFromFile("./assets/seats/circleTables")
+	algorithms := []func(bar *Bar){AssignSeatingDFS, AssignSeatingNaive, AssignSeatingRandom}
+
+	bar, err := NewBar("circleTables", "example")
 	if err != nil {
-		fmt.Println(err)
+		fmt.Print(err)
 		return
 	}
 
-	people, relations, err := ReadPeopleFromFile("./assets/people/example")
+	bar.TestAlgorithms(algorithms)
+
+	bar, err = NewBar("5table", "example")
 	if err != nil {
-		fmt.Println(err)
+		fmt.Print(err)
 		return
 	}
 
-	bar := Bar{Seats: seats, People: people, Relations: relations}
-
-	AssignSeatingDFS(&bar)
-
-	fmt.Println(bar.TotalValue() / 2)
+	bar.TestAlgorithms(algorithms)
 }

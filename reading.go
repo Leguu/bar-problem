@@ -19,6 +19,7 @@ func findSeatByID(seats []*Seat, id string) *Seat {
 }
 
 func ReadSeatsFromFile(path string) ([]*Seat, error) {
+	path = "assets/seats/" + path
 	file, err := os.Open(path)
 	if err != nil {
 		return nil, err
@@ -70,6 +71,7 @@ func findPersonByName(people []*Person, name string) *Person {
 }
 
 func ReadPeopleFromFile(path string) ([]*Person, []*Relation, error) {
+	path = "assets/people/" + path
 	file, err := os.Open(path)
 	if err != nil {
 		return nil, nil, err

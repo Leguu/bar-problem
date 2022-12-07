@@ -1,6 +1,8 @@
 package main
 
-import "sort"
+import (
+	"sort"
+)
 
 func (person *Person) potentialHighestValue() int {
 	total := 0
@@ -18,6 +20,14 @@ func AssignSeatingNaive(bar *Bar) {
 	sort.Slice(bar.Seats, func(i, j int) bool {
 		return len(bar.Seats[i].AdjacentSeats) < len(bar.Seats[j].AdjacentSeats)
 	})
+
+	for i, person := range bar.People {
+		person.Assign(bar.Seats[i])
+	}
+}
+
+func AssignSeatingRandom(bar *Bar) {
+	bar.Shuffle()
 
 	for i, person := range bar.People {
 		person.Assign(bar.Seats[i])
