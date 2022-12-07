@@ -1,0 +1,10 @@
+Alice David-1 Charlie-1 Bob-1
+Bob Charlie-1 Alice-1 Ivan-1
+Charlie Bob-1 Alice-1 David-1 Fabian-1 Eric-1 Helen-1
+David Charlie-1 Alice-1
+Eric Charlie-1 Fabian-1
+Fabian Eric-1 Charlie-1 Gary-1 Helen-1
+Gary Fabian-1 Helen-1
+Helen Gary-1 Fabian-1 Charlie-1 Ivan-1
+Ivan Bob-1 Helen-1 Julian-1
+Julian Ivan-1
