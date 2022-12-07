@@ -28,19 +28,30 @@ type Relation struct {
 func main() {
 	algorithms := []func(bar *Bar){AssignSeatingDFS, AssignSeatingNaive, AssignSeatingRandom}
 
-	bar, err := NewBar("circleTables", "example")
+	bar, err := NewBar("circleTables", "10people")
 	if err != nil {
 		fmt.Print(err)
 		return
 	}
 
 	bar.TestAlgorithms(algorithms)
+	fmt.Println()
 
-	bar, err = NewBar("5table", "example")
+	bar, err = NewBar("5table", "10people")
 	if err != nil {
 		fmt.Print(err)
 		return
 	}
 
 	bar.TestAlgorithms(algorithms)
+	fmt.Println()
+
+	bar, err = NewBar("cinema", "10people")
+	if err != nil {
+		fmt.Print(err)
+		return
+	}
+
+	bar.TestAlgorithms(algorithms)
+	fmt.Println()
 }
